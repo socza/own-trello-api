@@ -1,9 +1,9 @@
-function Column(name) {
+function Column(id, name) {
 
 	var self = this;
 	
-	this.id = randomString();
-	this.name = name;
+	this.id = id;
+	this.name = name || 'No name given';
 	this.$element = createColumn();
 
 	function createColumn() {
@@ -50,7 +50,19 @@ Column.prototype = {
 	
 	removeColumn: function() {
   	
-  		this.$element.remove();
+  		var self = this;
+    	
+    	$.ajax({
+      		
+      		url: baseUrl + '/column/' + self.id,
+      		method: 'DELETE',
+      		success: function(response) {
+        	
+        		self.element.remove();
+      
+      		}
+    
+    	});
 	
 	}
 
