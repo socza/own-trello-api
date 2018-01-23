@@ -1,31 +1,30 @@
+// KLASA KANBAN CARD
 function Card(description) {
 	
 	var self = this;
-
+	
 	this.id = randomString();
 	this.description = description;
-	this.$element = createCard();
+	this.element = createCard();
 
 	function createCard() {
 	
-		// creating the blocks
-		var $card = $('<li>').addClass('card');
-		var $cardDelete = $('<button>').addClass('btn-delete btn btn-sm btn-danger').text('X');
-		var $cardDescription = $('<p>').addClass('card-description').text(self.description);
-
-		// binding to click event
-		$cardDelete.click(function(){
-    	
-    		self.removeCard();
+		var card = $('<li class="card"></li>');
+		var cardDeleteBtn = $('<button class="btn-delete btn btn-sm btn-danger">x</button>');
+		var cardDescription = $('<p class="card-description"></p>');
+		
+		cardDeleteBtn.click(function(){
+	
+			self.removeCard();
 	
 		});
-
-		// combining block and return the card
-		$card.append($cardDelete)
-			.append($cardDescription);
-
-		return $card;
-
+		
+		card.append(cardDeleteBtn);
+		cardDescription.text(self.description);
+		card.append(cardDescription)
+		
+		return card;
+	
 	}
 
 }
@@ -33,8 +32,8 @@ function Card(description) {
 Card.prototype = {
 
 	removeCard: function() {
-		
-		this.$element.remove();
+
+	  this.element.remove();
 
 	}
 

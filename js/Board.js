@@ -1,34 +1,31 @@
 var board = {
     
-    name: 'Kanban Board',
-  
-    addColumn: function(column) {
+    name: 'Tablica Kanban',
+    createColumn: function(column) {
     
-        this.$element.append(column.$element);
-        initSortable();
-  
+      this.element.append(column.element);
+      initSortable();
+    
     },
-
-    $element: $('#board .column-container')
+    
+    element: $('#board .column-container')
 
 };
 
-
-$('.create-column').click(function() {  
+$('.create-column')
+    .click(function(){
     
-    var name = prompt('Wpisz nazwę kolumny'); 
-    var column = new Column(name);  
-    board.addColumn(column);
-  
-});
-
+        board.createColumn(new Column(prompt('Wpisz nazwę kolumny')));
+    
+    });
+    
 function initSortable() {
-  
-    $('.column-card-list').sortable({
     
-        connectWith: '.column-card-list',
+    $('.card-list').sortable({
+    
+        connectWith: '.card-list',
         placeholder: 'card-placeholder'
-  
+    
     }).disableSelection();
-
+  
 }
