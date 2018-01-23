@@ -6,6 +6,12 @@ var myHeaders = {
 
 };
 
+$.ajaxSetup({
+ 
+    headers: myHeaders
+
+});
+
 $.ajax({
     
     url: baseUrl + '/board',
@@ -32,11 +38,11 @@ function setupColumns(columns) {
 
 function setupCards(col, cards) {
  
-    cards.forEach(function (card) {
+    cards.forEach(function(e) {
  
-        var card = new Card(card.id, card.name, card.bootcamp_kanban_column_id);
+        var card = new Card(e.id, e.name, e.bootcamp_kanban_column_id);
         col.createCard(card);
  
-    })
+    });
 
 }

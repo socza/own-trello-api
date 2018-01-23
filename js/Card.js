@@ -21,7 +21,7 @@ function Card(id, name) {
 		
 		card.append(cardDeleteBtn);
 		cardDescription.text(self.name);
-		card.append(cardDescription)
+		card.append(cardDescription);
 		
 		return card;
 	
@@ -38,9 +38,9 @@ Card.prototype = {
     	$.ajax({
 	    	url: baseUrl + '/card/' + self.id,
 	    	method: 'DELETE',
-		    
 		    success: function(){
-		    self.element.remove();
+		    	
+		    	self.element.remove();
 	    
 	    	}
     
@@ -48,4 +48,4 @@ Card.prototype = {
 
 	}
 
-}
+};

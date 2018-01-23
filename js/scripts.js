@@ -116,7 +116,7 @@ $(function() {
 	
 		}
 	
-	}
+	};
 	
 	var board = {
     		
@@ -172,4 +172,4 @@ $(function() {
 	todoColumn.addCard(card1);
 	doneColumn.addCard(card2);
 
-})
+});
